@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { ToastCard } from "./components/toast/toastCard";
 
-function App() {
+export const Toast = () => {
+  const [showNotification, setShowNotification] = useState(false);
+
+  const onHandleClick = () => {
+    setShowNotification(!showNotification);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="text-center">
+      <h1 className="p-2 mb-2">
+        The library, which help you to provide the best notification
+      </h1>
+      <button
+        onClick={onHandleClick}
+        className="border rounded border-spacing-2 border-orange-500 px-2 py-1 mb-2 bg-orange-300"
+      >
+        Add notification
+      </button>
+      {showNotification && <ToastCard />}
     </div>
   );
-}
-
-export default App;
+};
